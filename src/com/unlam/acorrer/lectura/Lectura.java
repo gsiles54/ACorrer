@@ -46,20 +46,25 @@ public class Lectura {
 			Categoria[] categoriasM = new Categoria[cantCatM*80];
 			Categoria[] categoriasF = new Categoria[cantCatF*80];
 			
-			int[][] puestosPorCategoria = new int[4][cantCatF+cantCatM];
+			int[][] puestosPorCategoria = new int[cantCatF+cantCatM][4];
 	
 
 				for( int i = 0 ; i < cantCatF && (linea =br.readLine())!=null ; i++){
 					valores = linea.split(" ");
+
+					System.out.println(i);
+					System.out.println(valores[0] + " " + valores[1]);
 					for(int j = Integer.valueOf(valores[0]) ; j <= Integer.valueOf(valores[1]) ; j++) {
 						categoriasF[j] = new Categoria('F',Integer.valueOf(valores[0]),Integer.valueOf(valores[1]),i+1);
 					}
 				}
 				for( int i = 0 ; i < cantCatM && (linea =br.readLine())!=null ; i++){
 					valores = linea.split(" ");
+					System.out.println(i);
+					System.out.println(valores[0] + " " + valores[1]);
 					for(int j = Integer.valueOf(valores[0]) ; j <= Integer.valueOf(valores[1]) ; j++) {
 						categoriasM[j] = new Categoria('M',Integer.valueOf(valores[0]),Integer.valueOf(valores[1]),i+1);
-					}
+						}
 					}
 				
 				for(int i = 0 ; i < cantInscriptos && (linea =br.readLine())!=null ;  i++) {
@@ -69,10 +74,11 @@ public class Lectura {
 					Categoria categoriaInscripto = (sexo=='M')?categoriasM[edad]:categoriasF[edad];
 					listaInscripto.add(new Inscripto (edad,sexo,i+1,categoriaInscripto));
 				}
-				
+				int cont = 0;
 				for(int i = 0 ;  i < corredoresArribados && (linea =br.readLine())!=null ; i++) {
 					Integer nroInscripto = Integer.valueOf(linea);
 					Inscripto corredorEnMeta = listaInscripto.get(nroInscripto-1);
+					cont++;
 					if(corredorEnMeta.getSexo()=='F'){
 						int primerPuesto =puestosPorCategoria[corredorEnMeta.getCategoria().getOrden()-1][1];
 						if(primerPuesto==0){
@@ -106,13 +112,13 @@ public class Lectura {
 					}
 				}
 				
-				for(int i = 0 ; i < 4 ; i++){
-					for( int j  = 0 ; j < cantCatF+cantCatM ; j++){
+				for(int i = 0 ; i < cantCatF+cantCatM ; i++){
+					for( int j  = 0 ; j < 4 ; j++){
 						System.out.print(puestosPorCategoria[i][j] + " ");
 					}
 					System.out.println();
 				}
-			
+			System.out.println(cont);
 		}catch(IOException ex) {
 			ex.printStackTrace();
 		}
