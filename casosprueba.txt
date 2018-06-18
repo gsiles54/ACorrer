@@ -1,0 +1,27 @@
+ESTRES
+1OOOOOO inscriptos
+60 cf 
+60 cm
+edad max
+mitad f/m
+
+ESTRES
+1OOOOOO inscriptos
+60 cf 
+60 cm
+edad max
+todos f
+
+ESTRES
+1OOOOOO inscriptos
+60 cf 
+60 cm
+edad max
+todos m
+
+ESTRES
+1OOOOOO inscriptos
+60 cf 
+60 cm
+edad min
+mitad f/m
